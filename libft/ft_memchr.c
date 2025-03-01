@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/13 11:21:12 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/03/01 14:52:19 by ebarbash         ###   ########.fr       */
+/*   Created: 2024/10/18 15:20:48 by ebarbash          #+#    #+#             */
+/*   Updated: 2024/10/26 12:42:24 by ebarbash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdbool.h>
-#include "libft/libft.h"
 
-t_list	*ft_lst_nexttolast(t_list *lst);
-void	reverse_rotate_lst(t_list **head);
-void	arg_check(char **argv);
-void	duplicates_check(t_list *lst, int nbr);
-bool	is_valid_number(const char *str);
-t_list	*put_lst(char **argv, int argc, t_list *stack_a);
-void	print_lst(t_list *lst);
-bool	check_if_sorted(t_list	*lst);
-void	free_lst(t_list **lst);
+void	*ft_memchr(const void *s, int c, size_t n)
+{
+	const unsigned char	*temp;
+
+	temp = (const unsigned char *)s;
+	while (n > 0)
+	{
+		if (*temp == (unsigned char)c)
+			return ((void *)temp);
+		temp++;
+		n--;
+	}
+	return (0);
+}

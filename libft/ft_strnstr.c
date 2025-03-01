@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/13 11:21:12 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/03/01 14:52:19 by ebarbash         ###   ########.fr       */
+/*   Created: 2024/10/09 21:02:51 by ebarbash          #+#    #+#             */
+/*   Updated: 2024/10/26 12:34:25 by ebarbash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdbool.h>
-#include "libft/libft.h"
 
-t_list	*ft_lst_nexttolast(t_list *lst);
-void	reverse_rotate_lst(t_list **head);
-void	arg_check(char **argv);
-void	duplicates_check(t_list *lst, int nbr);
-bool	is_valid_number(const char *str);
-t_list	*put_lst(char **argv, int argc, t_list *stack_a);
-void	print_lst(t_list *lst);
-bool	check_if_sorted(t_list	*lst);
-void	free_lst(t_list **lst);
+char	*ft_strnstr(const char *big, const char *little, size_t len)
+{
+	size_t	i;
+	size_t	start;
+
+	i = 0;
+	start = 0;
+	if (!*little)
+		return ((char *)big);
+	while (big[start] != '\0' && start < len)
+	{
+		i = 0;
+		while (big[start + i] == little[i] && (start + i) < len)
+		{
+			if (little[i + 1] == '\0')
+				return ((char *)&big[start]);
+			i++;
+		}
+		start++;
+	}
+	return (0);
+}

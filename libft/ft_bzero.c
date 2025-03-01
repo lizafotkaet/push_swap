@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/13 11:21:12 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/03/01 14:52:19 by ebarbash         ###   ########.fr       */
+/*   Created: 2024/10/26 12:29:21 by ebarbash          #+#    #+#             */
+/*   Updated: 2024/10/26 12:32:09 by ebarbash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdbool.h>
-#include "libft/libft.h"
 
-t_list	*ft_lst_nexttolast(t_list *lst);
-void	reverse_rotate_lst(t_list **head);
-void	arg_check(char **argv);
-void	duplicates_check(t_list *lst, int nbr);
-bool	is_valid_number(const char *str);
-t_list	*put_lst(char **argv, int argc, t_list *stack_a);
-void	print_lst(t_list *lst);
-bool	check_if_sorted(t_list	*lst);
-void	free_lst(t_list **lst);
+void	*ft_memset(void *s, int c, size_t n);
+
+void	ft_bzero(void *s, size_t n) // overwrite firsn n characters with '\0'
+{
+	ft_memset(s, 0, n);
+}

@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/13 11:21:12 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/03/01 14:52:19 by ebarbash         ###   ########.fr       */
+/*   Created: 2024/10/18 15:28:33 by ebarbash          #+#    #+#             */
+/*   Updated: 2024/10/26 12:42:13 by ebarbash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdbool.h>
-#include "libft/libft.h"
 
-t_list	*ft_lst_nexttolast(t_list *lst);
-void	reverse_rotate_lst(t_list **head);
-void	arg_check(char **argv);
-void	duplicates_check(t_list *lst, int nbr);
-bool	is_valid_number(const char *str);
-t_list	*put_lst(char **argv, int argc, t_list *stack_a);
-void	print_lst(t_list *lst);
-bool	check_if_sorted(t_list	*lst);
-void	free_lst(t_list **lst);
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
+{
+	unsigned char	*s1_temp;
+	unsigned char	*s2_temp;
+
+	s1_temp = (unsigned char *)s1;
+	s2_temp = (unsigned char *)s2;
+	if (n == 0)
+		return (0);
+	while (n > 1 && (*s1_temp == *s2_temp))
+	{
+		s1_temp++;
+		s2_temp++;
+		n--;
+	}
+	return ((int)(*s1_temp - *s2_temp));
+}

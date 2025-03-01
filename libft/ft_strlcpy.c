@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/13 11:21:12 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/03/01 14:52:19 by ebarbash         ###   ########.fr       */
+/*   Created: 2024/10/13 19:42:38 by ebarbash          #+#    #+#             */
+/*   Updated: 2024/10/26 14:04:20 by ebarbash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdbool.h>
-#include "libft/libft.h"
 
-t_list	*ft_lst_nexttolast(t_list *lst);
-void	reverse_rotate_lst(t_list **head);
-void	arg_check(char **argv);
-void	duplicates_check(t_list *lst, int nbr);
-bool	is_valid_number(const char *str);
-t_list	*put_lst(char **argv, int argc, t_list *stack_a);
-void	print_lst(t_list *lst);
-bool	check_if_sorted(t_list	*lst);
-void	free_lst(t_list **lst);
+size_t	ft_strlen(const char *s);
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+{
+	size_t	i;
+
+	i = 0;
+	if (size == 0)
+		return (ft_strlen(src));
+	while (src[i] && i < size - 1)
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (ft_strlen(src));
+}

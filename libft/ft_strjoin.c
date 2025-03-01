@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/13 11:21:12 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/03/01 14:52:19 by ebarbash         ###   ########.fr       */
+/*   Created: 2024/10/19 22:01:25 by ebarbash          #+#    #+#             */
+/*   Updated: 2024/10/26 17:44:46 by ebarbash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdbool.h>
-#include "libft/libft.h"
 
-t_list	*ft_lst_nexttolast(t_list *lst);
-void	reverse_rotate_lst(t_list **head);
-void	arg_check(char **argv);
-void	duplicates_check(t_list *lst, int nbr);
-bool	is_valid_number(const char *str);
-t_list	*put_lst(char **argv, int argc, t_list *stack_a);
-void	print_lst(t_list *lst);
-bool	check_if_sorted(t_list	*lst);
-void	free_lst(t_list **lst);
+size_t	ft_strlen(const char *s);
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*res_str;
+	char	*temp;
+	size_t	len_total;
+
+	len_total = ft_strlen(s1) + ft_strlen(s2) + 1;
+	res_str = (char *)malloc(len_total * sizeof(char));
+	if (res_str == NULL)
+		return (NULL);
+	temp = res_str;
+	while (*s1)
+		*res_str++ = *s1++;
+	while (*s2)
+		*res_str++ = *s2++;
+	*res_str = '\0';
+	return (temp);
+}

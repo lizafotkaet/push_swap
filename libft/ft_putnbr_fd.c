@@ -1,25 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/13 11:21:12 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/03/01 14:52:19 by ebarbash         ###   ########.fr       */
+/*   Created: 2024/10/26 12:40:05 by ebarbash          #+#    #+#             */
+/*   Updated: 2024/10/26 12:40:32 by ebarbash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdbool.h>
-#include "libft/libft.h"
+#include <unistd.h>
 
-t_list	*ft_lst_nexttolast(t_list *lst);
-void	reverse_rotate_lst(t_list **head);
-void	arg_check(char **argv);
-void	duplicates_check(t_list *lst, int nbr);
-bool	is_valid_number(const char *str);
-t_list	*put_lst(char **argv, int argc, t_list *stack_a);
-void	print_lst(t_list *lst);
-bool	check_if_sorted(t_list	*lst);
-void	free_lst(t_list **lst);
+void	ft_putnbr_fd(int n, int fd) // -5
+{
+	long	number;
+	char	digit;	
+
+	number = n;
+	if (number < 0)
+	{
+		write(fd, "-", 1);
+		number *= -1;
+	}
+	digit = number % 10 + '0';
+	if (number >= 0 && number <= 9)
+	{
+		write(fd, &digit, 1);
+	}
+	else
+	{
+		ft_putnbr_fd(number / 10, fd);
+		write(fd, &digit, 1);
+		digit = number % 10 + '0';
+	}
+}

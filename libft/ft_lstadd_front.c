@@ -1,25 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/13 11:21:12 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/03/01 14:52:19 by ebarbash         ###   ########.fr       */
+/*   Created: 2024/10/29 13:15:42 by ebarbash          #+#    #+#             */
+/*   Updated: 2024/10/30 16:35:33 by ebarbash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdbool.h>
-#include "libft/libft.h"
+#include "libft.h"
 
-t_list	*ft_lst_nexttolast(t_list *lst);
-void	reverse_rotate_lst(t_list **head);
-void	arg_check(char **argv);
-void	duplicates_check(t_list *lst, int nbr);
-bool	is_valid_number(const char *str);
-t_list	*put_lst(char **argv, int argc, t_list *stack_a);
-void	print_lst(t_list *lst);
-bool	check_if_sorted(t_list	*lst);
-void	free_lst(t_list **lst);
+void	ft_lstadd_front(t_list **lst, t_list *new)
+{
+	if (new)
+	{
+		new->next = *lst;
+		*lst = new;
+	}
+}
+// #include <stdio.h>
+// int	main()
+// {
+// 	int i = 42;
+// 	t_list *lst = ft_lstnew((void *)i);
+// 	printf("%d\n", (int)lst->content);
+// 	printf("%p", lst->next);
+// }
+//
+//
+// typedef struct s_list
+// {
+// 	void			*content;
+// 	struct s_list	*next;
+// }	t_list;

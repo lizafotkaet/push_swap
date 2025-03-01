@@ -1,25 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   utilities1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/13 11:21:12 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/03/01 14:52:19 by ebarbash         ###   ########.fr       */
+/*   Created: 2024/12/11 14:27:10 by sergei_pilm       #+#    #+#             */
+/*   Updated: 2025/02/24 14:11:35 by ebarbash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdbool.h>
-#include "libft/libft.h"
+#include <stdarg.h>
+#include <unistd.h>
+#include <stdint.h>
+#include "ft_printf.h"
 
-t_list	*ft_lst_nexttolast(t_list *lst);
-void	reverse_rotate_lst(t_list **head);
-void	arg_check(char **argv);
-void	duplicates_check(t_list *lst, int nbr);
-bool	is_valid_number(const char *str);
-t_list	*put_lst(char **argv, int argc, t_list *stack_a);
-void	print_lst(t_list *lst);
-bool	check_if_sorted(t_list	*lst);
-void	free_lst(t_list **lst);
+int	num_len(int n)
+{
+	int		len;
+
+	len = 0;
+	if (n == -2147483648)
+		return (11);
+	if (n < 0)
+	{
+		len++;
+		n *= -1;
+	}
+	while (n >= 10)
+	{
+		len++;
+		n /= 10;
+	}
+	return (len + 1);
+}
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	write(fd, s, ft_strlen(s));
+}
+
+int	putchr(int c)
+{
+	write(1, &c, 1);
+	return (1);
+}
