@@ -6,7 +6,7 @@
 /*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 12:44:49 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/02/26 18:05:04 by ebarbash         ###   ########.fr       */
+/*   Updated: 2025/03/03 12:24:32 by ebarbash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ typedef struct s_list
 {
 	int				content;
 	struct s_list	*next;
-	struct s_list	*prev;
 }	t_list;
 
 int		ft_atoi(const char *nptr, int *error);
