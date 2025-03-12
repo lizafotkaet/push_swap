@@ -6,7 +6,7 @@
 /*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 11:21:12 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/03/04 17:43:10 by ebarbash         ###   ########.fr       */
+/*   Updated: 2025/03/11 21:03:54 by ebarbash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,53 @@ typedef struct d_list
 {
 	struct d_list	*prev;
 	int				number;
+	size_t			index;
+	size_t			moves;
 	struct d_list	*next;
 }	t_dlist;
 
+// dll functions:
+
 t_dlist	*ft_lst_nexttolast(t_dlist *lst);
-void	arg_check(char **argv);
-void	duplicates_check(t_dlist *lst, int nbr);
-bool	is_valid_number(const char *str);
-t_dlist	*put_lst(char **argv, int argc, t_dlist *stack_a);
-void	print_lst(t_dlist *lst);
-bool	sorted_check(t_dlist	*lst);
-void	free_lst(t_dlist **lst);
 t_dlist	*ft_dnew_node(int number);
 t_dlist	*ft_dlstlast(t_dlist *lst);
 t_dlist	*ft_dlsthead(t_dlist *lst);
-void	swap_lst(t_dlist *head);
+size_t	ft_dlstsize(t_dlist *lst);
+t_dlist	*put_lst(char **argv, int argc, t_dlist *stack_a);
 void	put_nodes(t_dlist **new_node, t_dlist **head, t_dlist **stack_a);
+void	print_lst(t_dlist *lst);
+void	free_lst(t_dlist **lst);
+
+// checks functions:
+
+void	arg_check(char **argv);
+void	duplicates_check(t_dlist *lst, int nbr);
+bool	is_valid_number(const char *str);
+bool	sorted_check(t_dlist	*lst);
+
+// moves:
 
 void	swap_lst(t_dlist *head);
 void	push_lst(t_dlist **head_a, t_dlist **head_b);
 void	rotate_lst(t_dlist **head);
 void	reverse_rotate_lst(t_dlist **head);
+void	sa(t_dlist *stack_a);
+void	sb(t_dlist *stack_b);
+void	ss(t_dlist *stack_a, t_dlist *stack_b);
+void	pa(t_dlist **stack_b, t_dlist **stack_a);
+void	pb(t_dlist **stack_a, t_dlist **stack_b);
+void	ra(t_dlist **stack_a);
+void	rb(t_dlist **stack_b);
+void	rr(t_dlist **stack_a, t_dlist **stack_b);
+void	rra(t_dlist **stack_a);
+void	rrb(t_dlist **stack_b);
+void	rrr(t_dlist **stack_a, t_dlist **stack_b);
+
+// actual sorting lmao:
+
+void	sort_three(t_dlist **head);
+void	push_all_but_three(t_dlist **stack_a, t_dlist **stack_b);
+t_dlist	*stack_max(t_dlist *stack);
+t_dlist	*stack_min(t_dlist *stack);
+size_t	calculate_ra(t_dlist *stack, t_dlist *target_node);
+bool	ra_or_rra(size_t ra_count, t_dlist	*stack);

@@ -6,7 +6,7 @@
 /*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 12:37:32 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/03/03 13:24:33 by ebarbash         ###   ########.fr       */
+/*   Updated: 2025/03/06 14:22:35 by ebarbash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,17 @@ t_dlist	*ft_lst_nexttolast(t_dlist *lst)
 	while (lst->next->next != 0)
 		lst = lst->next;
 	return(lst);
+}
+
+size_t	ft_dlstsize(t_dlist *lst)
+{
+	size_t	len;
+
+	len = 0;
+	while (lst != 0)
+	{
+		len++;
+		lst = lst->next;
+	}
+	return (len);
 }

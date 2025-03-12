@@ -3,8 +3,9 @@ CFLAGS = -Wall -Wextra -Werror -I./inc -g
 RM = rm -f
 
 ## Files ##
-SRCS = push_swap_main.c push_swap_utils.c push_swap_utils_1.c \
-		push_swap_dll_fts.c push_swap_moves.c \
+SRCS = main.c push_swap_utils.c push_swap_utils_1.c \
+		push_swap_dll_fts.c push_swap_moves.c push_swap_sort.c \
+		sort_utils.c \
 
 OBJS = $(SRCS:.c=.o)
 

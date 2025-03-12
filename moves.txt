@@ -20,28 +20,3 @@
 
     rrr : rra and rrb at the same time. 
 
-
-
-    WHAT TO DO:
-
-    1. BUBBLE SORT (TO FIND THE MEDIAN)
-
-1. Partitioning (Pushing elements from a to b)
-
-    Pick a median or pivot to divide stack a into smaller chunks.
-    Push elements less than the pivot to stack b (pb operation).
-    Continue until only a sorted portion remains in a.
-
-2. Sorting b while inserting
-
-    As elements go into b, use rotations (rb and rrb) to keep b in descending order.
-    This ensures that when we pop elements back to a, they will be in sorted order.
-
-3. Rebuilding a
-
-    Start pushing elements from b back to a using pa.
-    If b is sorted in descending order, pa will rebuild a in ascending order.
-
-4. Recursion
-
-    If chunks in a are still unsorted, repeat the process until everything is sorted.

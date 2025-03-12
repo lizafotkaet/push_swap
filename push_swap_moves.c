@@ -6,11 +6,80 @@
 /*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 18:55:54 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/03/04 17:42:06 by ebarbash         ###   ########.fr       */
+/*   Updated: 2025/03/10 12:16:39 by ebarbash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	sa(t_dlist *stack_a)
+{
+	swap_lst(stack_a);
+	ft_printf("sa\n");
+}
+
+void	sb(t_dlist *stack_b)
+{
+	swap_lst(stack_b);
+	ft_printf("sb\n");
+}
+
+void	ss(t_dlist *stack_a, t_dlist *stack_b)
+{
+	swap_lst(stack_a);
+	swap_lst(stack_b);
+	ft_printf("ss\n");
+}
+
+void	pa(t_dlist **stack_b, t_dlist **stack_a)
+{
+	push_lst(stack_b, stack_a);
+	ft_printf("pa\n");
+}
+
+void	pb(t_dlist **stack_a, t_dlist **stack_b)
+{
+	push_lst(stack_a, stack_b);
+	ft_printf("pb\n");
+}
+
+void	ra(t_dlist **stack_a)
+{
+	rotate_lst(stack_a);
+	ft_printf("ra\n");
+}
+
+void	rb(t_dlist **stack_b)
+{
+	rotate_lst(stack_b);
+	ft_printf("rb\n");
+}
+
+void	rr(t_dlist **stack_a, t_dlist **stack_b)
+{
+	rotate_lst(stack_a);
+	rotate_lst(stack_b);
+	ft_printf("rr\n");
+}
+
+void	rra(t_dlist **stack_a)
+{
+	reverse_rotate_lst(stack_a);
+	ft_printf("rra\n");
+}
+
+void	rrb(t_dlist **stack_b)
+{
+	reverse_rotate_lst(stack_b);
+	ft_printf("rrb\n");
+}
+
+void	rrr(t_dlist **stack_a, t_dlist **stack_b)
+{
+	reverse_rotate_lst(stack_a);
+	reverse_rotate_lst(stack_b);
+	ft_printf("rrr\n");
+}
 
 void	swap_lst(t_dlist *head)
 {
