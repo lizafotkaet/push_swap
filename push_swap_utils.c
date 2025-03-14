@@ -6,7 +6,7 @@
 /*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 16:25:03 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/03/03 13:51:33 by ebarbash         ###   ########.fr       */
+/*   Updated: 2025/03/14 17:23:10 by ebarbash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,14 @@ void	free_lst(t_dlist **lst)
 		free(*lst);
 		*lst = temp;
 	}
+}
+
+int	mod(int a, int b)
+{
+	int	result;
+	
+	result = a - b;
+	if (result < 0)
+	    result = -result;
+	return (result);
 }

@@ -6,56 +6,83 @@
 /*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:45:49 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/03/11 20:28:46 by ebarbash         ###   ########.fr       */
+/*   Updated: 2025/03/14 18:05:10 by ebarbash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	iterate_through_b(t_dlist *stack_b, t_dlist *stack_a) // COUNT ONLY ROTATE (figure out later)
+void	push_cheapest(t_dlist **stack_a, t_dlist **stack_b)
 {
-	size_t	count_rb;
-	size_t	count_total;
+	t_dlist	**head_a;
+	t_dlist	**head_b;
+	t_dlist	*cheapest;
+
+	head_a = stack_a;
+	head_b = stack_b;
+	iterate_through_b(stack_b, stack_a);
+	cheapest = find_cheapest(stack_b);
+}
+
+t_dlist	*find_cheapest(t_dlist *stack_b)
+{
+	t_dlist	*cheapest;
+	size_t	current_cheapest;
+
+	cheapest = NULL;
+	current_cheapest = INT_MAX;
+	while (stack_b)
+	{
+		if (stack_b->moves < current_cheapest)
+		{
+			current_cheapest = stack_b->moves;
+			cheapest = stack_b;
+		}
+		stack_b = stack_b->next;
+	}
+	return (cheapest);
+}
+
+void	iterate_through_b(t_dlist *stack_b, t_dlist *stack_a) // SUPPOSED TO CALCULATE THE MOVES FOR ALL OF B
+{
 	t_dlist	*current_target;
 	t_dlist	*head_b;
+	t_dlist	*head_a;
 
-	count_rb = 0;
-	count_total = 0;
 	current_target = NULL;
 	head_b = stack_b;
+	head_a = stack_a;
 	while (stack_b)
 	{
 		current_target = current_target_node(stack_a, stack_b);
-		count_total += calculate_ra(stack_a, current_target);
-		count_rb++;
-		stack_b = 
+		calculate_to_top(stack_a, current_target);
+		calculate_to_top(head_b, stack_b);
+		if (stack_b->above && current_target->above)
+			stack_b->moves = stack_b->moves + current_target->moves - mod(stack_b->moves, current_target->moves);
+		else if (!stack_b->above && !current_target->above)
+			stack_b->moves = stack_b->moves + current_target->moves - mod(stack_b->moves, current_target->moves);
+		stack_b = stack_b->next;
 	}
 }
 
-size_t	calculate_ra(t_dlist *stack, t_dlist *target_node) // calculates how many moves we need to get the CURRENT b node in the right position
+void	calculate_to_top(t_dlist *stack, t_dlist *target_node) // calculates how many moves it takes to get the target node to the top of ANY stack
 {
-	size_t	ra_count;
 	t_dlist	*head;
 
 	head = stack;
-	ra_count = 0;
-	while (stack != target_node)
+	while (stack && stack->number != target_node->number)
 	{
+		target_node->moves++;
 		stack = stack->next;
-		ra_count++;
+	}
+	if ((ft_dlstsize(head) - target_node->moves) >= target_node->moves)
+		target_node->above = true;
+	else
+	{
+		target_node->above = false;
+		target_node->moves = ft_dlstsize(head) - target_node->moves;
 	}
 	stack = head;
-	return (ra_count);		
-}
-
-bool	ra_or_rra(size_t ra_count, t_dlist	*stack) // true - rotate, false - reverse rotate
-{
-	if (ra_count > (ft_dlstsize(stack) - ra_count))
-		return (false);
-	else if (ra_count == (ft_dlstsize(stack) - ra_count))
-		return (true);
-	else
-		return (true);	
 }
 
 t_dlist	*current_target_node(t_dlist *stack_a, t_dlist *stack_b)
@@ -121,31 +148,3 @@ void	push_all_but_three(t_dlist **stack_a, t_dlist **stack_b)
 	while(ft_dlstsize(*stack_a) != 3)
 		push_lst(stack_a, stack_b);
 }
-
-// void	target_nodes(t_dlist *stack_b, t_dlist *stack_a)
-// {
-// 	t_dlist	*current;
-
-// 	current = NULL;
-// 	while (stack_b)
-// 	{
-// 		current = current_target_node(stack_a, stack_b);
-// 		ft_printf("Target node for %d: %d\n", stack_b->number, current->number);
-// 		stack_b = stack_b->next;
-// 	}
-
-// bool	is_rrb_cheaper(t_dlist *stack_b, t_dlist *head_b) // how many rb it takes to get to current stack b node and whether we should switch to rrb
-// {
-// 	size_t	rotations;
-
-// 	rotations = 0;
-// 	while (head_b != stack_b)
-// 	{
-// 		head_b = head_b->next;
-// 		rotations++;
-// 	}
-// 	if (rotations > (ft_dlstsize(head_b) - rotations))
-// 		return (false); // reverse rotate then
-// 	return (true); // regular rotate then
-// }
-// }

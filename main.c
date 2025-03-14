@@ -6,7 +6,7 @@
 /*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 11:21:02 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/03/11 18:18:52 by ebarbash         ###   ########.fr       */
+/*   Updated: 2025/03/14 16:12:11 by ebarbash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,6 @@ int	main(int argc, char **argv)
 	ft_printf("Target nodes:\n");
 	target_nodes(stack_b, stack_a);
 	ft_printf("\n");
-
-
-
-
-
-
-
-
-
-
-
 
 
 
