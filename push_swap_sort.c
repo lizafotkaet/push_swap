@@ -6,25 +6,48 @@
 /*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:45:49 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/03/16 16:36:33 by ebarbash         ###   ########.fr       */
+/*   Updated: 2025/03/16 18:56:07 by ebarbash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_cheapest(t_dlist **stack_a, t_dlist **stack_b)
+void	push_cheapest(t_dlist **stack_a, t_dlist **stack_b, t_dlist *target) // from stack b to stack a!!!!
 {
-	t_dlist	**head_a;
-	t_dlist	**head_b;
 	t_dlist	*cheapest;
+	t_dlist	*target;
 
-	head_a = stack_a;
-	head_b = stack_b;
+	if (!stack_a || !stack_b || !*stack_b) // Handle edge cases (empty stacks)
+		return ;
 	iterate_through_b(stack_b, stack_a);
 	cheapest = find_cheapest(stack_b);
+	while ((*stack_a)->number != target->number && (*stack_b)->number != cheapest->number) // common rotations
+	{
+		if (target->above && cheapest->above)
+			rr(stack_a, stack_b);
+		else if (!target->above && !cheapest->above)
+			rrr(stack_a, stack_b);
+		else
+			break;
+	}
+	while ((*stack_a)->number != target->number) // then stack a
+	{
+		if (target->above)
+			ra(stack_a);
+		else
+			rra(stack_a);
+	}
+	while ((*stack_b)->number != cheapest->number) // then stack b
+	{
+		if (cheapest->above)
+			rb(stack_b);
+		else
+			rrb(stack_b);
+	}
+	pa(stack_b, stack_a);
 }
 
-t_dlist	*find_cheapest(t_dlist *stack_b)
+t_dlist	*find_cheapest(t_dlist *stack_b) // cheapest element in stack B!!!!
 {
 	t_dlist	*cheapest;
 	size_t	current_cheapest;
@@ -55,12 +78,15 @@ void	iterate_through_b(t_dlist *stack_b, t_dlist *stack_a) // SUPPOSED TO CALCUL
 	while (stack_b)
 	{
 		current_target = current_target_node(stack_a, stack_b);
+//		stack_b->target = current_target->number;
 		calculate_to_top(stack_a, current_target);
 		calculate_to_top(head_b, stack_b);
 		if (stack_b->above && current_target->above)
 			stack_b->moves = stack_b->moves + current_target->moves - mod(stack_b->moves, current_target->moves);
 		else if (!stack_b->above && !current_target->above)
 			stack_b->moves = stack_b->moves + current_target->moves - mod(stack_b->moves, current_target->moves);
+		else if (!stack_b->above && !current_target->above)
+			stack_b->moves += current_target->moves;
 		stack_b = stack_b->next;
 	}
 }
