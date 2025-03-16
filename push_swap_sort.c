@@ -6,7 +6,7 @@
 /*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:45:49 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/03/16 18:56:07 by ebarbash         ###   ########.fr       */
+/*   Updated: 2025/03/16 19:00:05 by ebarbash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	push_cheapest(t_dlist **stack_a, t_dlist **stack_b, t_dlist *target) // fro
 	t_dlist	*cheapest;
 	t_dlist	*target;
 
-	if (!stack_a || !stack_b || !*stack_b) // Handle edge cases (empty stacks)
+	if (!stack_a || !stack_b || !*stack_b) // why i don't know but let it be
 		return ;
 	iterate_through_b(stack_b, stack_a);
 	cheapest = find_cheapest(stack_b);
@@ -78,7 +78,6 @@ void	iterate_through_b(t_dlist *stack_b, t_dlist *stack_a) // SUPPOSED TO CALCUL
 	while (stack_b)
 	{
 		current_target = current_target_node(stack_a, stack_b);
-//		stack_b->target = current_target->number;
 		calculate_to_top(stack_a, current_target);
 		calculate_to_top(head_b, stack_b);
 		if (stack_b->above && current_target->above)
@@ -138,39 +137,4 @@ t_dlist	*current_target_node(t_dlist *stack_a, t_dlist *stack_b)
 		stack_a = stack_a->next;
 	}
 	return (min);
-}
-
-void	sort_three(t_dlist **head)
-{
-	int	num_0;
-	int	num_1;
-	int	num_2;
-
-	num_0 = (*head)->number;
-	num_1 = ((*head)->next)->number;
-	num_2 = (((*head)->next)->next)->number; 
-	if (sorted_check(*head))
-		return ;
-	if (num_0 > num_1 && num_0 < num_2) // 2 1 3
-		swap_lst(*head);
-	if (num_0 < num_1 && num_0 > num_2) // 2 3 1
-		reverse_rotate_lst(head);
-	if (num_0 > num_1 && num_0 > num_2) // 3 2 1
-	{
-		swap_lst(*head);
-		reverse_rotate_lst(head);
-	}
-	if (num_0 < num_2 && num_1 > num_2) // 1 3 2
-	{
-		swap_lst(*head);
-		rotate_lst(head);
-	}
-	if (num_0 > num_1 && num_0 > num_2 && num_1 < num_2) // 3 1 2
-		rotate_lst(head);
-}
-
-void	push_all_but_three(t_dlist **stack_a, t_dlist **stack_b)
-{
-	while(ft_dlstsize(*stack_a) != 3)
-		push_lst(stack_a, stack_b);
 }

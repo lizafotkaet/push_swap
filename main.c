@@ -6,11 +6,16 @@
 /*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 11:21:02 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/03/14 16:12:11 by ebarbash         ###   ########.fr       */
+/*   Updated: 2025/03/16 19:00:17 by ebarbash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	actual_sorting(t_dlist **stack_a, t_dlist **stack_b)
+{
+		
+}
 
 int	main(int argc, char **argv)
 {
