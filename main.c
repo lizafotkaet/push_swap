@@ -6,7 +6,7 @@
 /*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 11:21:02 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/03/16 19:00:17 by ebarbash         ###   ########.fr       */
+/*   Updated: 2025/03/16 19:16:44 by ebarbash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,13 @@
 
 void	actual_sorting(t_dlist **stack_a, t_dlist **stack_b)
 {
-		
+	while (!sorted_check)
+	{
+		push_all_but_three(stack_a, stack_b);
+		sort_three(stack_a);
+		iterate_through_b(*stack_b, *stack_a);
+		push_cheapest(stack_a, stack_b);
+	}
 }
 
 int	main(int argc, char **argv)

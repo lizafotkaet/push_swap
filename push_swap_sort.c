@@ -6,13 +6,13 @@
 /*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:45:49 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/03/16 19:02:36 by ebarbash         ###   ########.fr       */
+/*   Updated: 2025/03/16 19:18:54 by ebarbash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_cheapest(t_dlist **stack_a, t_dlist **stack_b, t_dlist *target) // from stack b to stack a!!!!
+void	push_cheapest(t_dlist **stack_a, t_dlist **stack_b) // from stack b to stack a!!!!
 {
 	t_dlist	*cheapest;
 	t_dlist	*target;
@@ -78,6 +78,8 @@ void	iterate_through_b(t_dlist *stack_b, t_dlist *stack_a) // SUPPOSED TO CALCUL
 	while (stack_b)
 	{
 		current_target = current_target_node(stack_a, stack_b);
+		stack_b->target = current_target->number;
+		if (current_target)
 		calculate_to_top(stack_a, current_target);
 		calculate_to_top(head_b, stack_b);
 		if (stack_b->above && current_target->above)
@@ -87,6 +89,17 @@ void	iterate_through_b(t_dlist *stack_b, t_dlist *stack_a) // SUPPOSED TO CALCUL
 		else if (!stack_b->above && !current_target->above)
 			stack_b->moves += current_target->moves;
 		stack_b = stack_b->next;
+	}
+}
+
+bool	above_or_below(t_dlist *stack, t_dlist *current)
+{
+	int	i;
+
+	i = 0;
+	while (stack->number != )
+	{
+		
 	}
 }
 
