@@ -6,7 +6,7 @@
 /*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:45:49 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/03/16 19:00:05 by ebarbash         ###   ########.fr       */
+/*   Updated: 2025/03/16 19:02:36 by ebarbash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	push_cheapest(t_dlist **stack_a, t_dlist **stack_b, t_dlist *target) // fro
 		else if (!target->above && !cheapest->above)
 			rrr(stack_a, stack_b);
 		else
-			break;
+			break ;
 	}
 	while ((*stack_a)->number != target->number) // then stack a
 	{
