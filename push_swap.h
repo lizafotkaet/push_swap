@@ -6,7 +6,7 @@
 /*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 11:21:12 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/03/17 17:57:12 by ebarbash         ###   ########.fr       */
+/*   Updated: 2025/03/18 13:12:07 by ebarbash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	rrr(t_dlist **stack_a, t_dlist **stack_b);
 
 // actual sorting lmao:
 
+void	sort_two(t_dlist **stack);
 void	sort_three(t_dlist **head);
 void	push_all_but_three(t_dlist **stack_a, t_dlist **stack_b);
 t_dlist	*stack_max(t_dlist *stack);

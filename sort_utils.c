@@ -6,7 +6,7 @@
 /*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 16:49:22 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/03/11 17:41:14 by ebarbash         ###   ########.fr       */
+/*   Updated: 2025/03/18 17:22:51 by ebarbash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 t_dlist	*stack_max(t_dlist *stack)
 {
-	t_dlist		*max;
+	t_dlist	*max;
+	t_dlist	*head;
 
+	head = stack;
 	if (!stack)
 		return (NULL);
 	max = stack;
@@ -25,13 +27,16 @@ t_dlist	*stack_max(t_dlist *stack)
 			max = stack;
 		stack = stack->next;
 	}
+	stack = head;
 	return (max);
 }
 
 t_dlist	*stack_min(t_dlist *stack)
 {
 	t_dlist	*min;
+	t_dlist	*head;
 
+	head = stack;
 	if (!stack)
 		return (NULL);
 	min = stack;
@@ -41,5 +46,6 @@ t_dlist	*stack_min(t_dlist *stack)
 			min = stack;
 		stack = stack->next;
 	}
+	stack = head;
 	return (min);
 }

@@ -6,7 +6,7 @@
 /*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 11:31:15 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/03/17 18:53:45 by ebarbash         ###   ########.fr       */
+/*   Updated: 2025/03/18 13:33:30 by ebarbash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,11 @@ t_dlist	*put_lst(char **argv, int argc, t_dlist *stack_a)
 	t_dlist	*head;
 	t_dlist	*new_node;
 	int		i;
-	int		index;
 	int		temp;
 
 	head = NULL;
 	stack_a = NULL;
 	i = 1;
-	index = 0;
 	while (i < argc)
 	{
 		temp = ft_atoi(argv[i], NULL);
@@ -48,7 +46,6 @@ t_dlist	*put_lst(char **argv, int argc, t_dlist *stack_a)
 		put_nodes(&new_node, &head, &stack_a);
 		stack_a = new_node; // move current node forward (duh)
 		i++;
-		index++;
 	}
 	return (head);
 }
@@ -86,7 +83,7 @@ void	arg_check(char **argv)
 	int	i;
 	int	error;
 
-	i = 0;
+	i = 1;
 	error = 0;
 	while (argv[i])
 	{
