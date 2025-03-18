@@ -6,7 +6,7 @@
 /*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:45:49 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/03/16 19:18:54 by ebarbash         ###   ########.fr       */
+/*   Updated: 2025/03/17 17:56:53 by ebarbash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,23 @@
 void	push_cheapest(t_dlist **stack_a, t_dlist **stack_b) // from stack b to stack a!!!!
 {
 	t_dlist	*cheapest;
-	t_dlist	*target;
 
-	if (!stack_a || !stack_b || !*stack_b) // why i don't know but let it be
+	if (!stack_a || !stack_b || !*stack_b) // why i don't know but let it be WHISPER WOOOOOOOOOOORDS OF WISDOOOOOOOOOOOM LET IT BEEEEEEEEEEEE
 		return ;
-	iterate_through_b(stack_b, stack_a);
-	cheapest = find_cheapest(stack_b);
-	while ((*stack_a)->number != target->number && (*stack_b)->number != cheapest->number) // common rotations
+	iterate_through_b(*stack_b, *stack_a);
+	cheapest = find_cheapest(*stack_b);
+	while ((*stack_a)->number != cheapest->target && (*stack_b)->number != cheapest->number) // common rotations
 	{
-		if (target->above && cheapest->above)
+		if (cheapest->target_above && cheapest->above)
 			rr(stack_a, stack_b);
-		else if (!target->above && !cheapest->above)
+		else if (!cheapest->target_above && !cheapest->above)
 			rrr(stack_a, stack_b);
 		else
 			break ;
 	}
-	while ((*stack_a)->number != target->number) // then stack a
+	while ((*stack_a)->number != cheapest->target) // then stack a
 	{
-		if (target->above)
+		if (cheapest->target_above)
 			ra(stack_a);
 		else
 			rra(stack_a);
@@ -83,24 +82,26 @@ void	iterate_through_b(t_dlist *stack_b, t_dlist *stack_a) // SUPPOSED TO CALCUL
 		calculate_to_top(stack_a, current_target);
 		calculate_to_top(head_b, stack_b);
 		if (stack_b->above && current_target->above)
+		{
 			stack_b->moves = stack_b->moves + current_target->moves - mod(stack_b->moves, current_target->moves);
+			stack_b->target_above = true;
+		}
 		else if (!stack_b->above && !current_target->above)
+		{
 			stack_b->moves = stack_b->moves + current_target->moves - mod(stack_b->moves, current_target->moves);
-		else if (!stack_b->above && !current_target->above)
+			stack_b->target_above = false;
+		}
+		else
+		{
+			if (current_target->above)
+				stack_b->target_above = true;
+			else
+				stack_b->target_above = false;
 			stack_b->moves += current_target->moves;
+		}
 		stack_b = stack_b->next;
 	}
-}
-
-bool	above_or_below(t_dlist *stack, t_dlist *current)
-{
-	int	i;
-
-	i = 0;
-	while (stack->number != )
-	{
-		
-	}
+	stack_b = head_a;
 }
 
 void	calculate_to_top(t_dlist *stack, t_dlist *target_node) // calculates how many moves it takes to get the target node to the top of ANY stack

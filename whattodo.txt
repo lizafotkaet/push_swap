@@ -4,6 +4,4 @@
 
 3. Put all the functions together and SORT and TEST w a visual tester
 
-5. HOW TO STORE TARGET???????????
-
 4. refactor push_cheapest

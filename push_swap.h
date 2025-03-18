@@ -6,7 +6,7 @@
 /*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 11:21:12 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/03/16 19:11:57 by ebarbash         ###   ########.fr       */
+/*   Updated: 2025/03/17 17:57:12 by ebarbash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ typedef struct d_list
 	struct d_list	*prev;
 	int				number;
 	bool			above;
-//	int				index;
 	int				target;
 	bool			target_above;
 	size_t			moves;
@@ -69,6 +68,7 @@ void	sort_three(t_dlist **head);
 void	push_all_but_three(t_dlist **stack_a, t_dlist **stack_b);
 t_dlist	*stack_max(t_dlist *stack);
 t_dlist	*stack_min(t_dlist *stack);
+t_dlist	*current_target_node(t_dlist *stack_a, t_dlist *stack_b);
 void	calculate_to_top(t_dlist *stack, t_dlist *target_node);
 void	iterate_through_b(t_dlist *stack_b, t_dlist *stack_a);
 t_dlist	*find_cheapest(t_dlist *stack_b);

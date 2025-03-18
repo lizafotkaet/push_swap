@@ -6,7 +6,7 @@
 /*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 11:31:15 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/03/11 21:05:31 by ebarbash         ###   ########.fr       */
+/*   Updated: 2025/03/17 18:53:45 by ebarbash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ t_dlist	*put_lst(char **argv, int argc, t_dlist *stack_a)
 		duplicates_check(head, temp);
 		put_nodes(&new_node, &head, &stack_a);
 		stack_a = new_node; // move current node forward (duh)
-		stack_a->index = index;
 		i++;
 		index++;
 	}
@@ -87,7 +86,7 @@ void	arg_check(char **argv)
 	int	i;
 	int	error;
 
-	i = 1;
+	i = 0;
 	error = 0;
 	while (argv[i])
 	{
