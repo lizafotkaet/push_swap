@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_dll_fts.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sergei_pilman <sergei_pilman@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 12:37:32 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/03/06 14:22:35 by ebarbash         ###   ########.fr       */
+/*   Updated: 2025/03/23 23:52:42 by sergei_pilm      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_dlist	*ft_lst_nexttolast(t_dlist *lst)
 		return (NULL);
 	while (lst->next->next != 0)
 		lst = lst->next;
-	return(lst);
+	return (lst);
 }
 
 size_t	ft_dlstsize(t_dlist *lst)

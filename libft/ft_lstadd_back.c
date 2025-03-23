@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sergei_pilman <sergei_pilman@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 19:36:27 by ebarbash          #+#    #+#             */
-/*   Updated: 2024/10/30 16:36:04 by ebarbash         ###   ########.fr       */
+/*   Updated: 2025/03/23 23:17:26 by sergei_pilm      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		*lst = new;
 	else
 	{
-		while (temp->next != NULL) // Traverse to the last node
+		while (temp->next != NULL)
 			temp = temp->next;
-		temp->next = new;  // Link the last node to new
+		temp->next = new;
 	}
 }

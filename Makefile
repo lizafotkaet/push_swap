@@ -2,14 +2,12 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -I./inc -g
 RM = rm -f
 
-## Files ##
 SRCS = main.c push_swap_utils.c push_swap_utils_1.c \
 		push_swap_dll_fts.c push_swap_moves.c push_swap_sort.c \
 		sort_utils.c push_swap_sort_1.c \
 
 OBJS = $(SRCS:.c=.o)
 
-## Executable ##
 NAME = push_swap
 
 ## Compilation ##
