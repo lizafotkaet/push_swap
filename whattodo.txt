@@ -1,3 +1,0 @@
-1. UPDATE YOUR STRUCT!!!
-
-2. Calculate how many moves it takes to get the current node to the right position (i.e. how many times we rotate stack a)
