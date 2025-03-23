@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sergei_pilman <sergei_pilman@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 16:25:03 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/03/14 17:23:10 by ebarbash         ###   ########.fr       */
+/*   Updated: 2025/03/23 20:52:15 by sergei_pilm      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,13 @@ void	free_lst(t_dlist **lst)
 	}
 }
 
-int	mod(int a, int b)
+int	min_sum(int a, int b)
 {
 	int	result;
 	
-	result = a - b;
-	if (result < 0)
-	    result = -result;
+	if (a > b)
+		result = b;
+	else
+		result = a;
 	return (result);
 }

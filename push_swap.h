@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sergei_pilman <sergei_pilman@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 11:21:12 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/03/18 13:12:07 by ebarbash         ###   ########.fr       */
+/*   Updated: 2025/03/23 22:16:35 by sergei_pilm      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	arg_check(char **argv);
 void	duplicates_check(t_dlist *lst, int nbr);
 bool	is_valid_number(const char *str);
 bool	sorted_check(t_dlist	*lst);
-
+bool	arg_check_for_one(int argc, char **argv);
 // moves:
 
 void	swap_lst(t_dlist *head);
@@ -75,9 +75,11 @@ void	iterate_through_b(t_dlist *stack_b, t_dlist *stack_a);
 t_dlist	*find_cheapest(t_dlist *stack_b);
 void	push_cheapest(t_dlist **stack_a, t_dlist **stack_b);
 void	actual_sorting(t_dlist **stack_a, t_dlist **stack_b);
+void	is_above(t_dlist *stack_a, t_dlist *node);
 
 // assorted crap lmao
 
-int		mod(int a, int b);
+int		min_sum(int a, int b); // returns the minimum of two numbers
+
 
 

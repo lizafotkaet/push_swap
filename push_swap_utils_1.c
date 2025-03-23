@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils_1.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebarbash <ebarbash@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sergei_pilman <sergei_pilman@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 11:31:15 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/03/18 13:33:30 by ebarbash         ###   ########.fr       */
+/*   Updated: 2025/03/23 22:22:56 by sergei_pilm      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	arg_check(char **argv)
 			exit(EXIT_FAILURE);
 		}
 		ft_atoi(argv[i], &error);
-		if (error)
+		if (error == 1)
 		{
 			write(2, "Error\n", 6);
 			exit(EXIT_FAILURE);

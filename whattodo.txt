@@ -1,7 +1,0 @@
-TO FIX
-
-1. WHATEVER'S AFTER SORT THREE
-2. PUSH ALL BUT THREE
-3. 
-
-refactor huge functions
