@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sergei_pilman <sergei_pilman@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 16:25:03 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/03/23 20:52:15 by sergei_pilm      ###   ########.fr       */
+/*   Updated: 2025/03/24 01:32:23 by sergei_pilm      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	print_lst(t_dlist *lst)
 {
-	while(lst)
+	while (lst)
 	{
-		ft_printf("%d\n", lst->number);
+		ft_printf("%d\n", lst->num);
 		lst = lst->next;
 	}
 }
@@ -29,13 +29,13 @@ bool	sorted_check(t_dlist	*lst)
 	if (!lst)
 		return (true);
 	head = lst;
-	current_nbr = lst->number;
-	while(lst && lst->next)
+	current_nbr = lst->num;
+	while (lst && lst->next)
 	{
 		lst = lst->next;
-		if (current_nbr > lst->number)
+		if (current_nbr > lst->num)
 			return (false);
-		current_nbr = lst->number;
+		current_nbr = lst->num;
 	}
 	lst = head;
 	return (true);
@@ -56,7 +56,7 @@ void	free_lst(t_dlist **lst)
 int	min_sum(int a, int b)
 {
 	int	result;
-	
+
 	if (a > b)
 		result = b;
 	else

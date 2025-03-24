@@ -6,7 +6,7 @@
 /*   By: sergei_pilman <sergei_pilman@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 11:21:02 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/03/23 22:49:06 by sergei_pilm      ###   ########.fr       */
+/*   Updated: 2025/03/24 01:17:24 by sergei_pilm      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ void	actual_sorting(t_dlist **stack_a, t_dlist **stack_b)
 	while (min != *head)
 	{
 		if (min->above)
-	 		ra(stack_a);
-	 	else
-	 		rra(stack_a);
+			ra(stack_a);
+		else
+			rra(stack_a);
 	}
 }
 
@@ -60,11 +60,12 @@ void	sort_two(t_dlist **stack)
 	int	num1;
 	int	num2;
 
-	num1 = (*stack)->number;
-	num2 = ((*stack)->next)->number;
+	num1 = (*stack)->num;
+	num2 = ((*stack)->next)->num;
 	if (num1 > num2)
 		ra(stack);
 }
+
 bool	arg_check_for_one(int argc, char **argv)
 {
 	int		error;
@@ -93,7 +94,7 @@ int	main(int argc, char **argv)
 	if (argc == 1)
 		return (0);
 	if (arg_check_for_one(argc, argv))
-		return (0);	
+		return (0);
 	arg_check(argv);
 	stack_a = put_lst(argv, argc, stack_a);
 	if (sorted_check(stack_a))

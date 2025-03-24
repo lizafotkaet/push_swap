@@ -1,51 +1,110 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_sort_1.c                                 :+:      :+:    :+:   */
+/*   sort_1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sergei_pilman <sergei_pilman@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 18:59:00 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/03/23 12:55:13 by sergei_pilm      ###   ########.fr       */
+/*   Updated: 2025/03/24 01:30:08 by sergei_pilm      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_three(t_dlist **head)
+void	rotate_stacks(t_dlist **stack_a, t_dlist **stack_b, t_dlist *cheapest)
 {
-	int	num_0;
-	int	num_1;
-	int	num_2;
-
-	num_0 = (*head)->number;
-	num_1 = ((*head)->next)->number;
-	num_2 = (((*head)->next)->next)->number;
-	if (sorted_check(*head))
-		return ;
-	if (num_0 > num_1 && num_0 < num_2 && num_1 < num_2) // 2 1 3
-		sa(*head);
-	if (num_0 < num_1 && num_0 > num_2 && num_1 > num_2) // 2 3 1
-		rra(head);
-	if (num_0 > num_1 && num_0 > num_2 && num_1 > num_2) // 3 2 1
+	while ((*stack_a)->num != cheapest->target
+		&& (*stack_b)->num != cheapest->num)
 	{
-		sa(*head);
-		rra(head);
+		if (cheapest->target_above && cheapest->above)
+			rr(stack_a, stack_b);
+		else if (!cheapest->target_above && !cheapest->above)
+			rrr(stack_a, stack_b);
+		else
+			break ;
 	}
-	if (num_0 < num_2 && num_1 > num_2 && num_0 < num_1) // 1 3 2
+	while ((*stack_a)->num != cheapest->target)
 	{
-		sa(*head);
-		ra(head);
+		if (cheapest->target_above)
+			ra(stack_a);
+		else
+			rra(stack_a);
 	}
-	if (num_0 > num_1 && num_0 > num_2 && num_1 < num_2) // 3 1 2
-		ra(head);
+	while ((*stack_b)->num != cheapest->num)
+	{
+		if (cheapest->above)
+			rb(stack_b);
+		else
+			rrb(stack_b);
+	}
 }
 
-void	push_all_but_three(t_dlist **stack_a, t_dlist **stack_b)
+void	push_cheapest(t_dlist **stack_a, t_dlist **stack_b)
 {
-	size_t	lst_size;
-	
-	lst_size = ft_dlstsize(*stack_a);
-	while(lst_size-- > 3)
-		pb(stack_a, stack_b);
+	t_dlist	*cheapest;
+
+	if (!stack_a || !stack_b || !*stack_b)
+		return ;
+	iterate_through_b(*stack_b, *stack_a);
+	cheapest = find_cheapest(*stack_b);
+	rotate_stacks(stack_a, stack_b, cheapest);
+	pa(stack_b, stack_a);
+}
+
+t_dlist	*find_cheapest(t_dlist *stack_b)
+{
+	t_dlist	*cheapest;
+	size_t	current_cheapest;
+
+	cheapest = NULL;
+	current_cheapest = INT_MAX;
+	while (stack_b)
+	{
+		if (stack_b->moves < current_cheapest)
+		{
+			current_cheapest = stack_b->moves;
+			cheapest = stack_b;
+		}
+		stack_b = stack_b->next;
+	}
+	return (cheapest);
+}
+
+t_dlist	*stack_max(t_dlist *stack)
+{
+	t_dlist	*max;
+	t_dlist	*head;
+
+	head = stack;
+	if (!stack)
+		return (NULL);
+	max = stack;
+	while (stack)
+	{
+		if (stack->num > max->num)
+			max = stack;
+		stack = stack->next;
+	}
+	stack = head;
+	return (max);
+}
+
+t_dlist	*stack_min(t_dlist *stack)
+{
+	t_dlist	*min;
+	t_dlist	*head;
+
+	head = stack;
+	if (!stack)
+		return (NULL);
+	min = stack;
+	while (stack)
+	{
+		if (stack->num < min->num)
+			min = stack;
+		stack = stack->next;
+	}
+	stack = head;
+	return (min);
 }

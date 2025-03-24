@@ -6,7 +6,7 @@
 /*   By: sergei_pilman <sergei_pilman@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 18:55:54 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/03/23 23:50:21 by sergei_pilm      ###   ########.fr       */
+/*   Updated: 2025/03/24 01:17:59 by sergei_pilm      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,26 +24,26 @@ void	swap_lst(t_dlist *head)
 	t_dlist	*first;
 	t_dlist	*second;
 	int		temp;
-	
+
 	if (!head || !head->next)
 		return ;
 	first = head;
 	second = head->next;
-	temp = first->number;
-	first->number = second->number;
-	second->number = temp;
+	temp = first->num;
+	first->num = second->num;
+	second->num = temp;
 }
 
 void	push_lst(t_dlist **head_a, t_dlist **head_b)
 {
 	t_dlist	*temp_next_ptr;
-	
+
 	if (!*head_a)
 		return ;
 	temp_next_ptr = (*head_a)->next;
 	if (*head_b)
 		(*head_b)->prev = *head_a;
-	(*head_a)->next = *head_b; 
+	(*head_a)->next = *head_b;
 	*head_b = *head_a;
 	*head_a = temp_next_ptr;
 }
@@ -51,7 +51,7 @@ void	push_lst(t_dlist **head_a, t_dlist **head_b)
 void	rotate_lst(t_dlist **head)
 {
 	t_dlist	*new_head;
-	t_dlist	*temp_old_head; 
+	t_dlist	*temp_old_head;
 	t_dlist	*last;
 
 	if (!*head || !(*head)->next)

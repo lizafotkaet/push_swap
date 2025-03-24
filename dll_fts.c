@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_dll_fts.c                                :+:      :+:    :+:   */
+/*   dll_fts.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sergei_pilman <sergei_pilman@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 12:37:32 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/03/23 23:52:42 by sergei_pilm      ###   ########.fr       */
+/*   Updated: 2025/03/24 01:16:46 by sergei_pilm      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_dlist	*ft_dnew_node(int number)
+t_dlist	*ft_dnew_node(int num)
 {
 	t_dlist	*lst;
 
 	lst = malloc(sizeof(t_dlist));
 	if (lst == NULL)
 		return (NULL);
-	lst->number = number;
+	lst->num = num;
 	lst->prev = NULL;
 	lst->next = NULL;
 	return (lst);

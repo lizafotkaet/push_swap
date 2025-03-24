@@ -6,7 +6,7 @@
 /*   By: sergei_pilman <sergei_pilman@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 11:21:12 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/03/23 22:16:35 by sergei_pilm      ###   ########.fr       */
+/*   Updated: 2025/03/24 01:31:31 by sergei_pilm      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 typedef struct d_list
 {
 	struct d_list	*prev;
-	int				number;
+	int				num;
 	bool			above;
 	int				target;
 	bool			target_above;
@@ -62,7 +62,7 @@ void	rra(t_dlist **stack_a);
 void	rrb(t_dlist **stack_b);
 void	rrr(t_dlist **stack_a, t_dlist **stack_b);
 
-// actual sorting lmao:
+// actual sorting:
 
 void	sort_two(t_dlist **stack);
 void	sort_three(t_dlist **head);
@@ -71,8 +71,10 @@ t_dlist	*stack_max(t_dlist *stack);
 t_dlist	*stack_min(t_dlist *stack);
 t_dlist	*current_target_node(t_dlist *stack_a, t_dlist *stack_b);
 void	calculate_to_top(t_dlist *stack, t_dlist *target_node);
+void	update_moves_conditions(t_dlist *stack_b, t_dlist *current_target);
 void	iterate_through_b(t_dlist *stack_b, t_dlist *stack_a);
 t_dlist	*find_cheapest(t_dlist *stack_b);
+void	rotate_stacks(t_dlist **stack_a, t_dlist **stack_b, t_dlist *cheapest);
 void	push_cheapest(t_dlist **stack_a, t_dlist **stack_b);
 void	actual_sorting(t_dlist **stack_a, t_dlist **stack_b);
 void	is_above(t_dlist *stack_a, t_dlist *node);
@@ -80,6 +82,3 @@ void	is_above(t_dlist *stack_a, t_dlist *node);
 // assorted crap lmao
 
 int		min_sum(int a, int b); // returns the minimum of two numbers
-
-
-

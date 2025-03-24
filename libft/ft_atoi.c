@@ -6,7 +6,7 @@
 /*   By: sergei_pilman <sergei_pilman@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 18:39:10 by ebarbash          #+#    #+#             */
-/*   Updated: 2025/03/23 22:22:08 by sergei_pilm      ###   ########.fr       */
+/*   Updated: 2025/03/24 00:33:51 by sergei_pilm      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,22 +43,22 @@ int	ft_atoi(const char *nptr, int *error)
 	return (num * sign);
 }
 
-#include <limits.h>
-
+// #include <limits.h>
+// 
 // int	main(int argc, char **argv)
 // {
 // 	// char	*str = "    +2147483647";
 // 	int		nbr;
 // 	int		error = 0;
-
+// 
 // 	// long long	number;
-
+// 
 // 	// number = 9223372036854775807;
 // 	// // printf("%ld\n", number);
 // 	// number = number + number;
-
+// 
 // 	// printf("%ld\n", number);
-	
+// 
 // 	if (argc != 2)
 // 		return (-1);
 // 	nbr = ft_atoi(argv[1], &error);
