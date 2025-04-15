@@ -1,0 +1,14 @@
+# Exclude object files
+*.o
+
+# Exclude output files
+*.out
+
+# Exclude executables
+*.exe
+
+# Exclude dependency files
+*.d
+
+# Exclude lib files
+*.a
