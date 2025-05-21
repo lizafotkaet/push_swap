@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I./inc -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -I./inc -g 
 RM = rm -f
 
 SRCS = main.c dll_fts.c moves.c moves_1.c \
